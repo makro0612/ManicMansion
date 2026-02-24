@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-
-=======
 import pygame as pg
 from pathlib import Path
 
@@ -26,4 +23,3 @@ class Emo:
 
     def draw(self, vindu):
         vindu.blit(self.bilde, self.rect)
->>>>>>> Stashed changes
