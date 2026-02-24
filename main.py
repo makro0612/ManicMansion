@@ -1,4 +1,4 @@
-
+from constants import *
 import pygame as pg
 
 
@@ -6,16 +6,7 @@ import pygame as pg
         
 
 
-WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
 
-
-
-VINDU_BREDDE = 500
-VINDU_HOYDE = 500
-FPS = 60
 
 pg.init()
 vindu = pg.display.set_mode([VINDU_BREDDE, VINDU_HOYDE])
