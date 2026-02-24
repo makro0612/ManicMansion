@@ -5,7 +5,7 @@ IMAGE_DIR = Path(__file__).parent
 
 class Emo:
     def __init__(self) -> None:
-        self.bilde = pg.image.load(IMAGE_DIR / "emo.png")
+        self.bilde = pg.image.load(IMAGE_DIR / "nek.jpg")
         self.rect = self.bilde.get_rect()
         self.rect.x = 50
         self.rect.y = 50
