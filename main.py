@@ -1,12 +1,13 @@
 from constants import *
 import pygame as pg
+from person import *
 
 
 
         
 
 
-
+fyr = Fyr()
 
 pg.init()
 vindu = pg.display.set_mode([VINDU_BREDDE, VINDU_HOYDE])
@@ -26,7 +27,7 @@ def main():
 
         vindu.fill(WHITE)
         
-        
+        fyr.draw(vindu)
         pg.display.flip()
         clock.tick(FPS)
 
