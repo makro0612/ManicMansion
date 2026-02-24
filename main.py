@@ -19,6 +19,7 @@ def main():
     
     running = True
     while running:
+        keys = pg.key.get_pressed()
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
@@ -28,6 +29,7 @@ def main():
         vindu.fill(WHITE)
         
         fyr.draw(vindu)
+        fyr.move(keys)
         pg.display.flip()
         clock.tick(FPS)
 
