@@ -1,6 +1,12 @@
 from constants import *
 import pygame as pg
 from person import *
+from pathlib import Path
+#from pygame.key import ScancodeWrapper
+
+#IMAGE_DIR: Path = Path(__file__).parent
+
+
 
 
 
