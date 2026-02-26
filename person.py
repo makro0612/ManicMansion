@@ -1,6 +1,7 @@
 import pygame as pg
 from pathlib import Path
 from pygame.key import ScancodeWrapper
+from constants import *
 
 IMAGE_DIR: Path = Path(__file__).parent
 
@@ -15,15 +16,30 @@ class Fyr:
         self.speed = 5
 
     def move(self, keys:ScancodeWrapper):
-        if keys[pg.K_UP]:
-            self.rect.y -= self.speed
-        if keys[pg.K_DOWN]:
-            self.rect.y += self.speed
-        if keys[pg.K_LEFT]:
-            self.rect.x -= self.speed
-        if keys[pg.K_RIGHT]:
-            self.rect.x += self.speed
-    
+        if self.rect.y > 0:
+            if keys[pg.K_UP]:
+                self.rect.y -= self.speed
+        else:
+            self.rect.y = 0
+        
+        if self.rect.y + self.rect.height < VINDU_HOYDE:
+            if keys[pg.K_DOWN]:
+                self.rect.y += self.speed
+        else:
+            self.rect.y = VINDU_HOYDE - self.rect.height
+
+        if self.rect.x > 0:
+            if keys[pg.K_LEFT]:
+                self.rect.x -= self.speed
+        else:
+            self.rect.x = 0
+        
+        if self.rect.x + self.rect.width < VINDU_BREDDE:
+            if keys[pg.K_RIGHT]:
+                self.rect.x += self.speed
+        else:
+            self.rect.x = VINDU_BREDDE - self.rect.width
+        
     #def update(self):
 
 
