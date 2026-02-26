@@ -51,6 +51,5 @@ class Fyr:
     def update(self,sList:list[Spokelse], hList:list[None]):
 
 
-
     def draw(self, vindu:pg.Surface):
         vindu.blit(self.bilde, self.rect)

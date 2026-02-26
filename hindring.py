@@ -11,3 +11,6 @@ class Hindring:
         self.rect = self.bilde.get_rect()
         self.rect.x = 75
         self.rect.y = 75
+
+    def draw(self,vindu:pg.Surface):
+        vindu.blit(self.bilde,self.rect)
