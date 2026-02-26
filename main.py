@@ -54,6 +54,8 @@ def main():
         for s in sauer:
             s.draw(vindu)
 
+        for h in hindringer:
+            h.draw(vindu)
 
         
         pg.display.flip()
