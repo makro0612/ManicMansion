@@ -4,7 +4,6 @@ from pygame.key import ScancodeWrapper
 from constants import *
 from spokelse import Spokelse
 from hindring import Hindring
-
 IMAGE_DIR: Path = Path(__file__).parent
 
 
@@ -17,6 +16,7 @@ class Fyr:
         self.rect.y = 50
         self.speed = 5
         self.poeng = 0
+        self.dod = False
 
 
     def move(self, keys:ScancodeWrapper):
@@ -48,6 +48,7 @@ class Fyr:
         self.poeng = 0
         self.rect.x = 50
         self.rect.y = 50
+        self.dod = True
         
     def update(self,sList:list[Spokelse], hList:list[Hindring]):
         for spok in sList:

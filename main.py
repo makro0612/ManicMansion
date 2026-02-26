@@ -31,9 +31,7 @@ clock = pg.time.Clock()
 def main():
 
 
-    if dod:
-        vindu.blit(dodBilde, vindu.get_rect())
-        FPS = 0
+    
 
     
     running = True
@@ -44,6 +42,7 @@ def main():
                 running = False
             elif event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
                 running = False
+                
 
         vindu.blit(bakgrunnsbilde,vindu.get_rect())
         
