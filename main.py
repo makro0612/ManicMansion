@@ -11,10 +11,10 @@ IMAGE_DIR: Path = Path(__file__).parent
 
 
 
-
+dodBilde = pg.image.load(str(IMAGE_DIR / "bilder/duDodeR.png"))
 bakgrunnsbilde = pg.image.load(str(IMAGE_DIR / "bilder/bakgrunn.webp"))
         
-
+dod = False
 
 fyr = Fyr()
 spokelse = Spokelse()
@@ -29,6 +29,11 @@ clock = pg.time.Clock()
 
 
 def main():
+
+
+    if dod:
+        vindu.blit(dodBilde, vindu.get_rect())
+        FPS = 0
 
     
     running = True
