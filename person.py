@@ -3,6 +3,7 @@ from pathlib import Path
 from pygame.key import ScancodeWrapper
 from constants import *
 from spokelse import Spokelse
+from hindring import Hindring
 
 IMAGE_DIR: Path = Path(__file__).parent
 
@@ -48,7 +49,10 @@ class Fyr:
         self.rect.x = 50
         self.rect.y = 50
         
-    def update(self,sList:list[Spokelse], hList:list[None]):
+    def update(self,sList:list[Spokelse], hList:list[Hindring]):
+        for spok in sList:
+            if pg.Rect.colliderect(self.rect,spok):
+                self.reset()
 
 
 

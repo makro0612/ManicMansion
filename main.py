@@ -3,6 +3,7 @@ import pygame as pg
 from person import Fyr
 from spokelse import Spokelse
 from sau import Sheep
+from hindring import Hindring
 from pathlib import Path
 #from pygame.key import ScancodeWrapper
 
@@ -20,6 +21,8 @@ spokelse = Spokelse()
 spokelser = [spokelse]
 sau = Sheep()
 sauer = [sau]
+hindring = Hindring()
+hindringer = [hindring]
 pg.init()
 vindu = pg.display.set_mode([VINDU_BREDDE, VINDU_HOYDE])
 clock = pg.time.Clock()
@@ -41,6 +44,7 @@ def main():
         
         fyr.draw(vindu)
         fyr.move(keys)
+        fyr.update(spokelser,hindringer)
 
         for spok in spokelser:
             spok.draw(vindu)
