@@ -2,6 +2,7 @@ import pygame as pg
 from pathlib import Path
 from pygame.key import ScancodeWrapper
 from constants import *
+from spokelse import Spokelse
 
 IMAGE_DIR: Path = Path(__file__).parent
 
@@ -14,6 +15,8 @@ class Fyr:
         self.rect.x = 50
         self.rect.y = 50
         self.speed = 5
+        self.poeng = 0
+
 
     def move(self, keys:ScancodeWrapper):
         if self.rect.y > 0:
@@ -39,8 +42,14 @@ class Fyr:
                 self.rect.x += self.speed
         else:
             self.rect.x = VINDU_BREDDE - self.rect.width
+    
+    def reset(self):
+        self.poeng = 0
+        self.rect.x = 50
+        self.rect.y = 50
         
-    #def update(self):
+    def update(self,sList:list[Spokelse], hList:list[None]):
+
 
 
     def draw(self, vindu:pg.Surface):
