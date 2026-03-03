@@ -74,17 +74,29 @@ def main():
         for s in sauer:
             s.draw(vindu)
             if s.moving:
-                s.move(keys)
-            if s.update(venstreside):
+                # if this is the sheep the player is carrying, position it relative to player
+                if s is fyr.attached_sheep:
+                    s.rect.x = fyr.rect.x - 25
+                    s.rect.y = fyr.rect.y - 50
+                else:
+                    s.move(keys)
+            if s.update(venstreside, hindringer):
+                # if this sheep was attached, detach it
+                if s is fyr.attached_sheep:
+                    fyr.attached_sheep = None
                 sauer.remove(s)
                 poeng += 1
-                fyr.sau = False
+                nyttSpok = Spokelse()
+                spokelser.append(nyttSpok)
+                nyHind = Hindring()
+                hindringer.append(nyHind)
+                
                 nySau = Sheep()
                 sauer.append(nySau)
 
         # draw score in top-left corner
         score_surf = font.render(f"Poeng: {poeng}", True, (255, 255, 255))
-        vindu.blit(score_surf, (10, 10))
+        vindu.blit(score_surf, (VINDU_BREDDE//2 -18, 10))
 
 
         for h in hindringer:

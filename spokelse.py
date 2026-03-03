@@ -10,11 +10,11 @@ IMAGE_DIR: Path = Path(__file__).parent
 class Spokelse:
     def __init__(self) -> None:
         self.bilde = pg.image.load(str(IMAGE_DIR / "bilder/ghost.png"))
-        self.bilde = pg.transform.smoothscale(self.bilde, (70, 70))
+        self.bilde = pg.transform.smoothscale(self.bilde, (50, 50))
         self.rect = self.bilde.get_rect()
         self.rect.x = VINDU_BREDDE/2
         self.rect.y = VINDU_HOYDE/2
-        self.speed = 5
+        self.speed = 2.5
         self.direction = randint(1,8)
         
 
@@ -58,5 +58,5 @@ class Spokelse:
         
 
     def draw(self, vindu:pg.Surface):
-        
+
         vindu.blit(self.bilde, self.rect)
