@@ -11,9 +11,11 @@ IMAGE_DIR: Path = Path(__file__).parent
 
 
 
-dodBilde = pg.image.load(str(IMAGE_DIR / "bilder/duDodeR.png"))
+#dodBilde = pg.image.load(str(IMAGE_DIR / "bilder/duDodeR.png"))
 bakgrunnsbilde = pg.image.load(str(IMAGE_DIR / "bilder/gulv.jpg"))
 stortBilde = pg.transform.smoothscale(bakgrunnsbilde, (VINDU_BREDDE, VINDU_HOYDE))
+dodBilde = pg.image.load(str(IMAGE_DIR / "bilder/duDode2.jpeg"))
+#bakgrunnsbilde = pg.image.load(str(IMAGE_DIR / "bilder/bakgrunn.webp"))
         
 dod = False
 
