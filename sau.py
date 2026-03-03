@@ -14,6 +14,7 @@ class Sheep:
         self.rect.x = VINDU_BREDDE//2 - 50
         self.rect.y = VINDU_HOYDE//2-50
         self.speed = 5
+        self.moving = False
 
     def move(self, keys:ScancodeWrapper):
         if keys[pg.K_UP]:
