@@ -11,7 +11,7 @@ IMAGE_DIR: Path = Path(__file__).parent
 
 
 
-dodBilde = pg.image.load(str(IMAGE_DIR / "bilder/duDodeR.png"))
+dodBilde = pg.image.load(str(IMAGE_DIR / "bilder/duDode2.jpeg"))
 bakgrunnsbilde = pg.image.load(str(IMAGE_DIR / "bilder/bakgrunn.webp"))
         
 dod = False
