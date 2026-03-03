@@ -12,8 +12,8 @@ class Spokelse:
         self.bilde = pg.image.load(str(IMAGE_DIR / "bilder/ghost.png"))
         self.bilde = pg.transform.smoothscale(self.bilde, (70, 70))
         self.rect = self.bilde.get_rect()
-        self.rect.x = 50
-        self.rect.y = 50
+        self.rect.x = VINDU_BREDDE/2
+        self.rect.y = VINDU_HOYDE/2
         self.speed = 5
         self.direction = randint(1,8)
         
