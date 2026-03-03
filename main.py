@@ -48,7 +48,7 @@ def main():
         
         fyr.draw(vindu)
         fyr.move(keys)
-        fyr.update(spokelser,hindringer)
+        fyr.update(spokelser,hindringer,sauer)
 
         for spok in spokelser:
             spok.draw(vindu)
@@ -57,6 +57,8 @@ def main():
         
         for s in sauer:
             s.draw(vindu)
+            if s.moving:
+                s.move(keys)
 
         for h in hindringer:
             h.draw(vindu)

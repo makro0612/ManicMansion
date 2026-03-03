@@ -4,6 +4,7 @@ from pygame.key import ScancodeWrapper
 from constants import *
 from spokelse import Spokelse
 from hindring import Hindring
+from sau import Sheep
 IMAGE_DIR: Path = Path(__file__).parent
 
 
@@ -50,10 +51,19 @@ class Fyr:
         self.rect.y = 50
         self.dod = True
         
-    def update(self,sList:list[Spokelse], hList:list[Hindring]):
+    def update(self,sList:list[Spokelse], hList:list[Hindring],saList:list[Sheep]):
         for spok in sList:
             if pg.Rect.colliderect(self.rect,spok):
                 self.reset()
+        
+
+        for sau in saList:
+            if pg.Rect.colliderect(self.rect,sau.rect):
+                sau.moving = True
+                sau.rect.y = self.rect.y - 50
+                sau.rect.x = self.rect.x - 25
+
+        
 
 
     def draw(self, vindu:pg.Surface):
