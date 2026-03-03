@@ -5,6 +5,7 @@ from spokelse import Spokelse
 from sau import Sheep
 from hindring import Hindring
 from pathlib import Path
+from safezone import *
 #from pygame.key import ScancodeWrapper
 
 IMAGE_DIR: Path = Path(__file__).parent
@@ -24,15 +25,23 @@ fyr = Fyr()
 spokelse = Spokelse()
 spokelser = [spokelse]
 sau = Sheep()
-sauer = [sau]
+sau2 = Sheep()
+sauer = [sau,sau2]
 hindring = Hindring()
 hindringer = [hindring]
 pg.init()
 vindu = pg.display.set_mode([VINDU_BREDDE, VINDU_HOYDE])
 clock = pg.time.Clock()
+poeng = 0
+
+hoyreside = HoyreSide()
+venstreside = VenstreSide()
 
 
 def main():
+    global poeng  # allow incrementing the score from within the function
+    # prepare a font for score rendering
+    font = pg.font.SysFont(None, 36)
 
 
     
@@ -49,6 +58,9 @@ def main():
                 
 
         vindu.blit(stortBilde,vindu.get_rect())
+
+        venstreside.draw(vindu)
+        hoyreside.draw(vindu)
         
         fyr.draw(vindu)
         fyr.move(keys)
@@ -63,6 +75,17 @@ def main():
             s.draw(vindu)
             if s.moving:
                 s.move(keys)
+            if s.update(venstreside):
+                sauer.remove(s)
+                poeng += 1
+                fyr.sau = False
+                nySau = Sheep()
+                sauer.append(nySau)
+
+        # draw score in top-left corner
+        score_surf = font.render(f"Poeng: {poeng}", True, (255, 255, 255))
+        vindu.blit(score_surf, (10, 10))
+
 
         for h in hindringer:
             h.draw(vindu)

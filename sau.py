@@ -2,6 +2,8 @@ import pygame as pg
 from pathlib import Path
 from pygame.key import ScancodeWrapper
 from constants import *
+from random import randint
+from safezone import VenstreSide
 
 IMAGE_DIR: Path = Path(__file__).parent
 
@@ -11,8 +13,8 @@ class Sheep:
         self.bilde = pg.image.load(str(IMAGE_DIR / "bilder/sheepU.png"))
         self.bilde = pg.transform.smoothscale(self.bilde, (70, 70))
         self.rect = self.bilde.get_rect()
-        self.rect.x = VINDU_BREDDE//2 - 50
-        self.rect.y = VINDU_HOYDE//2-50
+        self.rect.x = VINDU_BREDDE - 70
+        self.rect.y = randint(0,VINDU_HOYDE)
         self.speed = 5
         self.moving = False
 
@@ -26,7 +28,13 @@ class Sheep:
         if keys[pg.K_RIGHT]:
             self.rect.x += self.speed
     
-    #def update(self):
+    def update(self, venstreside:VenstreSide) -> bool:
+        
+        if pg.Rect.colliderect(self.rect, venstreside.rect):
+            return True
+        return False
+
+
 
 
     def draw(self, vindu:pg.Surface):

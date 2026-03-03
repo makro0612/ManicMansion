@@ -18,9 +18,16 @@ class Fyr:
         self.speed = 5
         self.poeng = 0
         self.dod = False
+        self.prev_x = self.rect.x
+        self.prev_y = self.rect.y
+        self.sau = False
 
 
     def move(self, keys:ScancodeWrapper):
+       
+        self.prev_x = self.rect.x
+        self.prev_y = self.rect.y
+        
         if self.rect.y > 0:
             if keys[pg.K_UP]:
                 self.rect.y -= self.speed
@@ -49,6 +56,8 @@ class Fyr:
         self.poeng = 0
         self.rect.x = 50
         self.rect.y = 50
+        self.prev_x = 50
+        self.prev_y = 50
         self.dod = True
         
     def update(self,sList:list[Spokelse], hList:list[Hindring],saList:list[Sheep]):
@@ -58,10 +67,17 @@ class Fyr:
         
 
         for sau in saList:
-            if pg.Rect.colliderect(self.rect,sau.rect):
+            if pg.Rect.colliderect(self.rect,sau.rect) and self.sau == False:
                 sau.moving = True
                 sau.rect.y = self.rect.y - 50
                 sau.rect.x = self.rect.x - 25
+                self.sau = True
+
+        
+        for hind in hList:
+            if pg.Rect.colliderect(self.rect, hind.rect):
+                self.rect.x = self.prev_x
+                self.rect.y = self.prev_y
 
         
 

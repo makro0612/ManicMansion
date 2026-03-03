@@ -42,10 +42,10 @@ class Spokelse:
     
     def update(self):
         
-        if self.rect.x +70 >=VINDU_BREDDE:
+        if self.rect.x +170 >=VINDU_BREDDE:
             directions:list[int] = [6,7,8]
             self.direction = directions[randint(0,2)]
-        elif self.rect.x <=0:
+        elif self.rect.x <=100:
             directions:list[int] = [2,3,4]
             self.direction = directions[randint(0,2)]
         elif self.rect.y <=0:
@@ -58,4 +58,5 @@ class Spokelse:
         
 
     def draw(self, vindu:pg.Surface):
+        
         vindu.blit(self.bilde, self.rect)
