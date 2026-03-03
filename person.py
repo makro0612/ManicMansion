@@ -54,6 +54,7 @@ class Fyr:
         for spok in sList:
             if pg.Rect.colliderect(self.rect,spok):
                 self.reset()
+                
 
 
     def draw(self, vindu:pg.Surface):

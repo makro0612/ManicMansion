@@ -60,6 +60,11 @@ def main():
 
         for h in hindringer:
             h.draw(vindu)
+        
+        if dod == True:
+            dod_rect = dodBilde.get_rect()
+            dod_rect.center = vindu.get_rect().center
+            vindu.blit(dodBilde, dod_rect)
 
         
         pg.display.flip()
