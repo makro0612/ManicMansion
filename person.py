@@ -1,11 +1,11 @@
 import pygame as pg
-from pathlib import Path
+
 from pygame.key import ScancodeWrapper
 from constants import *
 from spokelse import Spokelse
 from hindring import Hindring
 from sau import Sheep
-IMAGE_DIR: Path = Path(__file__).parent
+
 
 
 class Fyr:
@@ -66,7 +66,7 @@ class Fyr:
         
     def update(self,sList:list[Spokelse], hList:list[Hindring],saList:list[Sheep]):
         for spok in sList:
-            if pg.Rect.colliderect(self.rect, spok):
+            if pg.Rect.colliderect(self.rect, spok.rect):
                 self.reset()
 
         

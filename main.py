@@ -4,11 +4,11 @@ from person import Fyr
 from spokelse import Spokelse
 from sau import Sheep
 from hindring import Hindring
-from pathlib import Path
+#from pathlib import Path
 from safezone import *
 #from pygame.key import ScancodeWrapper
 
-IMAGE_DIR: Path = Path(__file__).parent
+
 
 
 
@@ -106,6 +106,7 @@ def main():
             dod_rect = dodBilde.get_rect()
             dod_rect.center = vindu.get_rect().center
             vindu.blit(dodBilde, dod_rect)
+            vindu.blit(score_surf, (VINDU_BREDDE//2 -18, 10))
 
         
         pg.display.flip()

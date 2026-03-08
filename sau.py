@@ -1,12 +1,12 @@
 import pygame as pg
-from pathlib import Path
+
 from pygame.key import ScancodeWrapper
 from constants import *
 from random import randint
 from safezone import VenstreSide
 from hindring import Hindring
 
-IMAGE_DIR: Path = Path(__file__).parent
+
 
 
 class Sheep:
@@ -15,7 +15,7 @@ class Sheep:
         self.bilde = pg.transform.smoothscale(self.bilde, (70, 70))
         self.rect = self.bilde.get_rect()
         self.rect.x = VINDU_BREDDE - 70
-        self.rect.y = randint(0,VINDU_HOYDE)
+        self.rect.y = randint(0,VINDU_HOYDE-70)
         self.speed = 5
         self.moving = False
         # store previous position for collision handling

@@ -1,20 +1,22 @@
 import pygame as pg
-from pathlib import Path
+
 #from pygame.key import ScancodeWrapper
 from random import randint 
 from constants import *
 
-IMAGE_DIR: Path = Path(__file__).parent
+
 
 
 class Spokelse:
     def __init__(self) -> None:
-        self.bilde = pg.image.load(str(IMAGE_DIR / "bilder/ghost.png"))
-        self.bilde = pg.transform.smoothscale(self.bilde, (50, 50))
+        self.Obilde = pg.image.load(str(IMAGE_DIR / "bilder/ghost.png"))
+        self.bilde = pg.transform.smoothscale(self.Obilde, (50, 50))
+        self.flipped: pg.Surface = pg.transform.flip(self.bilde, flip_x=True, flip_y=False)
+        self.unflipped: pg.Surface = pg.transform.smoothscale(self.Obilde, (50, 50))
         self.rect = self.bilde.get_rect()
-        self.rect.x = VINDU_BREDDE/2
-        self.rect.y = VINDU_HOYDE/2
-        self.speed = 2.5
+        self.rect.x = VINDU_BREDDE//2
+        self.rect.y = VINDU_HOYDE//2
+        self.speed = 3
         self.direction = randint(1,8)
         
 
@@ -24,21 +26,27 @@ class Spokelse:
         elif self.direction == 2:
             self.rect.y -= self.speed
             self.rect.x += self.speed
+            self.bilde = self.flipped
         elif self.direction == 3:
             self.rect.x += self.speed
+            self.bilde = self.flipped
         elif self.direction == 4:
             self.rect.x += self.speed
             self.rect.y += self.speed
+            self.bilde = self.flipped
         elif self.direction == 5:
             self.rect.y += self.speed
         elif self.direction == 6:
             self.rect.y += self.speed
             self.rect.x -= self.speed
+            self.bilde = self.unflipped
         elif self.direction == 7:
             self.rect.x -= self.speed
+            self.bilde = self.unflipped
         elif self.direction == 8:
             self.rect.x -=self.speed
             self.rect.y -= self.speed
+            self.bilde = self.unflipped
     
     def update(self):
         
